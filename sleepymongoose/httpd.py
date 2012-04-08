@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from SocketServer import BaseServer
+from SocketServer import BaseServer, ThreadingMixIn
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from handlers import MongoHandler
 
@@ -40,7 +40,7 @@ except AttributeError:
 
 
 
-class MongoServer(HTTPServer):
+class MongoServer(ThreadingMixIn, HTTPServer):
 
     pem = None
 
